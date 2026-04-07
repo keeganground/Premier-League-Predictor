@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PL Match Predictor</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Premier League Match Predictor</h1>
+      <p class="subtitle">Powered by historical match data</p>
+    </header>
+
+    <div class="loading-overlay" id="loadingOverlay">
+      <div class="spinner"></div>
+      <p id="loadingText">Loading teams...</p>
+    </div>
+
+    <section class="team-selection">
+      <div class="team-card home">
+        <label>Home Team</label>
+        <select id="homeTeam">
+          <option value="">Select home team</option>
+        </select>
+        <div class="team-crest" id="homeCrest"></div>
+      </div>
+
+      <div class="vs">VS</div>
+
+      <div class="team-card away">
+        <label>Away Team</label>
+        <select id="awayTeam">
+          <option value="">Select away team</option>
+        </select>
+        <div class="team-crest" id="awayCrest"></div>
+      </div>
+    </section>
+
+    <button id="predictBtn" disabled>Predict Match</button>
+
+    <section class="results" id="results" style="display:none">
+      <h2>Prediction</h2>
+
+      <div class="probability-bar">
+        <div class="prob home-prob" id="homeProb">
+          <span class="prob-label" id="homeProbLabel">Home</span>
+        </div>
+        <div class="prob draw-prob" id="drawProb">
+          <span class="prob-label" id="drawProbLabel">Draw</span>
+        </div>
+        <div class="prob away-prob" id="awayProb">
+          <span class="prob-label" id="awayProbLabel">Away</span>
+        </div>
+      </div>
+
+      <div class="predicted-score">
+        <h3>Predicted Score</h3>
+        <div class="score-display">
+          <span id="homeScoreName" class="score-team"></span>
+          <span id="predictedHome" class="score-num">0</span>
+          <span class="score-dash">–</span>
+          <span id="predictedAway" class="score-num">0</span>
+          <span id="awayScoreName" class="score-team"></span>
+        </div>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <h4>Home Form (Last 5)</h4>
+          <div class="form-badges" id="homeForm"></div>
+        </div>
+        <div class="stat-card">
+          <h4>Away Form (Last 5)</h4>
+          <div class="form-badges" id="awayForm"></div>
+        </div>
+        <div class="stat-card">
+          <h4>Home Avg Goals (Home)</h4>
+          <p class="stat-value" id="homeAvgGoals">-</p>
+        </div>
+        <div class="stat-card">
+          <h4>Away Avg Goals (Away)</h4>
+          <p class="stat-value" id="awayAvgGoals">-</p>
+        </div>
+        <div class="stat-card">
+          <h4>Home Avg Conceded (Home)</h4>
+          <p class="stat-value" id="homeAvgConceded">-</p>
+        </div>
+        <div class="stat-card">
+          <h4>Away Avg Conceded (Away)</h4>
+          <p class="stat-value" id="awayAvgConceded">-</p>
+        </div>
+        <div class="stat-card full-width">
+          <h4>Head-to-Head (Last 5 meetings)</h4>
+          <div id="h2hResults" class="h2h-results">-</div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>Data from <a href="https://www.football-data.org" target="_blank">football-data.org</a> &middot; Free tier</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
